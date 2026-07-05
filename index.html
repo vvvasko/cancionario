@@ -219,7 +219,7 @@
     <button class="tab-btn active" data-tab="input">Add a Song</button>
     <button class="tab-btn" data-tab="read">Read &amp; Tap</button>
     <button class="tab-btn" data-tab="sidebyside">Side by Side</button>
-    <button class="tab-btn" data-tab="bank">Word Bank</button>
+    <button class="tab-btn" data-tab="wordbank">Word Bank</button>
     <button class="tab-btn" data-tab="quiz">Quiz</button>
     <button class="tab-btn" data-tab="typeit">Type It</button>
   </nav>
@@ -306,7 +306,7 @@
   </section>
 
   <!-- BANK TAB -->
-  <section id="bank">
+  <section id="wordbank">
     <div class="card">
       <span class="eyebrow">Vocabulary</span>
       <h2 id="bank-title">Word Bank</h2>
@@ -662,7 +662,7 @@ document.getElementById('save-library-btn').addEventListener('click', ()=>{
 });
 
 /* ---------------- Tabs ---------------- */
-const TAB_IDS = ['input','read','sidebyside','bank','quiz','typeit'];
+const TAB_IDS = ['input','read','sidebyside','wordbank','quiz','typeit'];
 document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click', ()=> switchTab(btn.dataset.tab, true)); });
 function switchTab(id, updateHash){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===id));
