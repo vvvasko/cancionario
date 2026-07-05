@@ -34,20 +34,13 @@
     min-height:100vh;
     line-height:1.5;
   }
-  .wrap{max-width:920px;margin:0 auto;padding:48px 24px 100px;}
+  .wrap{max-width:960px;margin:0 auto;padding:48px 24px 100px;}
 
-  header.hero{
-    text-align:center;
-    padding:20px 0 44px;
-    border-bottom:1px solid var(--line);
-    margin-bottom:36px;
-    position:relative;
-  }
+  header.hero{ text-align:center; padding:20px 0 44px; border-bottom:1px solid var(--line); margin-bottom:36px; position:relative; }
   .flame{
     width:10px;height:14px;margin:0 auto 18px;
     background:linear-gradient(180deg, var(--peach), var(--rose-700));
     border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
-    filter:blur(0.2px);
     box-shadow:0 0 18px 4px rgba(231,84,128,0.4);
     animation:flicker 2.6s ease-in-out infinite;
   }
@@ -57,66 +50,44 @@
     55%{transform:scaleY(0.92) scaleX(1.05) rotate(2deg); opacity:1;}
     80%{transform:scaleY(1.05) scaleX(0.97) rotate(-1deg); opacity:0.95;}
   }
-  h1{
-    font-family:'Fraunces', serif;
-    font-weight:700;
-    font-size:clamp(2.4rem, 6vw, 3.6rem);
-    margin:0 0 8px;
-    letter-spacing:-0.01em;
-    color:var(--rose-800);
-  }
+  h1{ font-family:'Fraunces', serif; font-weight:700; font-size:clamp(2.4rem, 6vw, 3.6rem); margin:0 0 8px; letter-spacing:-0.01em; color:var(--rose-800); }
   h1 em{ font-style:italic; font-weight:500; color:var(--rose-600); }
-  .tagline{ color:var(--muted); font-size:1.02rem; max-width:520px; margin:0 auto; }
-  .eyebrow{
-    text-transform:uppercase; letter-spacing:0.16em; font-size:0.72rem;
-    color:var(--rose-700); font-weight:700; margin-bottom:10px;
-  }
+  .tagline{ color:var(--muted); font-size:1.02rem; max-width:560px; margin:0 auto; }
+  .eyebrow{ text-transform:uppercase; letter-spacing:0.16em; font-size:0.72rem; color:var(--rose-700); font-weight:700; margin-bottom:10px; }
 
   nav.tabs{ display:flex; gap:6px; justify-content:center; margin-bottom:38px; flex-wrap:wrap; }
   nav.tabs button{
     font-family:'Manrope', sans-serif; font-weight:700; font-size:0.85rem; letter-spacing:0.02em;
-    padding:10px 20px; border-radius:100px; border:1px solid var(--line);
+    padding:10px 18px; border-radius:100px; border:1px solid var(--line);
     background:rgba(255,255,255,0.4); color:var(--muted); cursor:pointer; transition:all 0.2s ease;
   }
   nav.tabs button:hover{color:var(--rose-800); border-color:var(--rose-600);}
-  nav.tabs button.active{
-    background:linear-gradient(135deg, var(--rose-600), var(--rose-800));
-    color:#fff; border-color:transparent;
-  }
+  nav.tabs button.active{ background:linear-gradient(135deg, var(--rose-600), var(--rose-800)); color:#fff; border-color:transparent; }
 
   section{display:none;}
   section.active{display:block; animation:fadeIn 0.4s ease;}
   @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
 
-  .card{
-    background:var(--card); border:1px solid var(--line); border-radius:16px;
-    padding:28px; margin-bottom:20px; box-shadow:0 4px 24px rgba(216,91,140,0.08);
-  }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:28px; margin-bottom:20px; box-shadow:0 4px 24px rgba(216,91,140,0.08); }
   .card h2{ font-family:'Fraunces', serif; font-weight:600; font-size:1.5rem; margin:0 0 6px; color:var(--rose-800); }
   .card p.desc{color:var(--muted); font-size:0.92rem; margin:0 0 20px;}
 
   textarea{
-    width:100%; min-height:160px; background:rgba(255,255,255,0.7);
-    border:1px solid var(--line); border-radius:10px; color:var(--ink);
-    font-family:'Manrope', sans-serif; font-size:0.98rem; padding:16px; resize:vertical;
+    width:100%; min-height:160px; background:rgba(255,255,255,0.7); border:1px solid var(--line);
+    border-radius:10px; color:var(--ink); font-family:'Manrope', sans-serif; font-size:0.98rem;
+    padding:16px; resize:vertical;
   }
   textarea:focus{outline:2px solid var(--rose-600); outline-offset:2px;}
-
   input[type=text], input[type=password]{
-    width:100%; background:rgba(255,255,255,0.7); border:1px solid var(--line);
-    border-radius:10px; color:var(--ink); font-family:'Manrope', sans-serif;
-    font-size:0.98rem; padding:12px 14px;
+    width:100%; background:rgba(255,255,255,0.7); border:1px solid var(--line); border-radius:10px;
+    color:var(--ink); font-family:'Manrope', sans-serif; font-size:0.98rem; padding:12px 14px;
   }
   input[type=text]:focus, input[type=password]:focus{outline:2px solid var(--rose-600); outline-offset:2px;}
-
-  label.field-label{
-    display:block; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em;
-    color:var(--rose-700); font-weight:700; margin-bottom:8px;
-  }
+  label.field-label{ display:block; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--rose-700); font-weight:700; margin-bottom:8px; }
 
   .btn{
-    font-family:'Manrope', sans-serif; font-weight:700; font-size:0.9rem;
-    padding:12px 24px; border-radius:10px; border:none; cursor:pointer;
+    font-family:'Manrope', sans-serif; font-weight:700; font-size:0.9rem; padding:12px 24px;
+    border-radius:10px; border:none; cursor:pointer;
     background:linear-gradient(135deg, var(--rose-600), var(--rose-800)); color:#fff;
     transition:transform 0.15s ease, box-shadow 0.15s ease;
   }
@@ -124,50 +95,44 @@
   .btn:active{transform:translateY(0);}
   .btn.ghost{ background:rgba(255,255,255,0.5); border:1px solid var(--line); color:var(--ink); }
   .btn.ghost:hover{border-color:var(--rose-600);}
-  .btn.small{padding:9px 16px; font-size:0.82rem;}
+  .btn.small{padding:8px 14px; font-size:0.8rem;}
   .btn:disabled{opacity:0.45; cursor:not-allowed; transform:none; box-shadow:none;}
 
   .row{display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
-
   .presets{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
-  .chip{
-    font-size:0.8rem; padding:6px 14px; border-radius:100px; border:1px solid var(--line);
-    color:var(--muted); cursor:pointer; background:rgba(255,255,255,0.4);
-  }
+  .chip{ font-size:0.8rem; padding:6px 14px; border-radius:100px; border:1px solid var(--line); color:var(--muted); cursor:pointer; background:rgba(255,255,255,0.4); }
   .chip:hover{color:var(--rose-700); border-color:var(--rose-600);}
+  .chip.selected{ background:linear-gradient(135deg, var(--rose-600), var(--rose-800)); color:#fff; border-color:transparent; }
 
-  details.advanced{
-    border:1px dashed var(--line); border-radius:12px; padding:16px 20px; margin-top:22px;
-    background:rgba(255,255,255,0.3);
-  }
+  details.advanced{ border:1px dashed var(--line); border-radius:12px; padding:16px 20px; margin-top:22px; background:rgba(255,255,255,0.3); }
   details.advanced summary{cursor:pointer; font-weight:700; color:var(--rose-700); font-size:0.9rem;}
   details.advanced .desc{margin-top:12px;}
+
+  .library-list{display:flex; flex-direction:column; gap:8px; margin-top:14px;}
+  .library-item{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background:rgba(255,255,255,0.55); border:1px solid var(--line); border-radius:10px; padding:10px 14px;
+  }
+  .library-item .name{font-weight:600; color:var(--rose-800); font-size:0.92rem;}
+  .library-item .actions{display:flex; gap:8px;}
 
   .lyrics-title{ font-family:'Fraunces', serif; font-size:1.3rem; color:var(--rose-700); margin-bottom:4px; }
   .lyrics-sub{color:var(--muted); font-size:0.85rem; margin-bottom:22px;}
   .lyric-line{ font-size:1.15rem; line-height:2.1; margin-bottom:2px; }
-  .word-token{
-    cursor:pointer; padding:1px 3px; border-radius:5px;
-    transition:background 0.15s ease, color 0.15s ease;
-    border-bottom:1.5px dotted rgba(216,91,140,0.45);
-  }
+  .word-token{ cursor:pointer; padding:1px 3px; border-radius:5px; transition:background 0.15s ease, color 0.15s ease; border-bottom:1.5px dotted rgba(216,91,140,0.45); }
   .word-token:hover{ background:rgba(231,84,128,0.16); color:var(--rose-700); }
   .word-token.selected{background:var(--rose-600); color:#fff; border-bottom-color:transparent;}
   .word-token.pending{border-bottom-style:dashed; border-bottom-color:rgba(216,91,140,0.7);}
   .word-token.custom{border-bottom-style:solid; border-bottom-color:var(--good);}
 
   .popup{
-    position:sticky; bottom:16px; margin-top:24px; background:#fff;
-    border:1px solid var(--rose-600); border-radius:14px; padding:20px 22px;
-    box-shadow:0 12px 40px rgba(168,54,95,0.18); display:none;
+    position:sticky; bottom:16px; margin-top:24px; background:#fff; border:1px solid var(--rose-600);
+    border-radius:14px; padding:20px 22px; box-shadow:0 12px 40px rgba(168,54,95,0.18); display:none;
   }
   .popup.show{display:block; animation:popIn 0.25s ease;}
   @keyframes popIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
   .popup .word-es{ font-family:'Fraunces', serif; font-size:1.4rem; color:var(--rose-700); }
-  .popup .word-pos{
-    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em;
-    color:var(--muted); margin-left:8px;
-  }
+  .popup .word-pos{ font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-left:8px; }
   .popup .word-en{ font-size:1.05rem; margin-top:4px; color:var(--ink); }
   .popup .word-note{ font-size:0.85rem; color:var(--muted); margin-top:8px; }
   .popup input[type=text]{margin-top:8px;}
@@ -176,37 +141,48 @@
   .bank-item{ background:rgba(255,255,255,0.65); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
   .bank-item .es{font-family:'Fraunces', serif; font-size:1.1rem; color:var(--rose-700);}
   .bank-item .en{font-size:0.9rem; color:var(--muted); margin-top:2px;}
-  .bank-item .en.unresolved{color:var(--bad); font-style:italic;}
 
-  .quiz-progress{
-    display:flex; justify-content:space-between; align-items:center;
-    font-size:0.85rem; color:var(--muted); margin-bottom:18px;
-  }
+  .fill-list{display:flex; flex-direction:column; gap:8px; margin-top:16px;}
+  .fill-row{display:grid; grid-template-columns:120px 1fr; gap:10px; align-items:center;}
+  .fill-row .es{font-family:'Fraunces', serif; color:var(--rose-700);}
+  .fill-row input{padding:9px 12px; font-size:0.9rem;}
+
+  .quiz-progress{ display:flex; justify-content:space-between; align-items:center; font-size:0.85rem; color:var(--muted); margin-bottom:18px; }
   .progress-track{ height:6px; background:rgba(216,91,140,0.12); border-radius:100px; overflow:hidden; margin-bottom:26px; }
   .progress-fill{ height:100%; background:linear-gradient(90deg, var(--rose-600), var(--rose-800)); border-radius:100px; transition:width 0.3s ease; }
   .quiz-question{ font-family:'Fraunces', serif; font-size:1.7rem; text-align:center; margin:10px 0 30px; color:var(--rose-800); }
   .quiz-options{display:grid; gap:10px; max-width:460px; margin:0 auto;}
   .quiz-option{
-    background:rgba(255,255,255,0.7); border:1px solid var(--line); border-radius:10px;
-    padding:14px 18px; text-align:left; color:var(--ink); font-size:1rem; cursor:pointer;
-    font-family:'Manrope', sans-serif;
+    background:rgba(255,255,255,0.7); border:1px solid var(--line); border-radius:10px; padding:14px 18px;
+    text-align:left; color:var(--ink); font-size:1rem; cursor:pointer; font-family:'Manrope', sans-serif;
   }
   .quiz-option:hover{border-color:var(--rose-600);}
   .quiz-option.correct{background:rgba(79,157,92,0.18); border-color:var(--good);}
   .quiz-option.wrong{background:rgba(209,70,106,0.18); border-color:var(--bad);}
   .quiz-option:disabled{cursor:default;}
-
   .quiz-result{text-align:center; padding:30px 0;}
   .quiz-result .score{font-family:'Fraunces', serif; font-size:3rem; color:var(--rose-700);}
+  .length-picker{display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 20px;}
+
+  .type-it-line{ font-family:'Fraunces', serif; font-size:1.5rem; text-align:center; margin:10px 0 12px; color:var(--rose-800); line-height:1.8; }
+  .type-it-line .word-token{font-size:1.5rem;}
+  .hint-area{ max-width:520px; margin:0 auto 20px; text-align:center; font-size:0.88rem; color:var(--muted); display:flex; flex-direction:column; gap:4px; }
+  .hint-area .hint-entry{background:rgba(255,255,255,0.5); border:1px solid var(--line); border-radius:8px; padding:6px 10px;}
+  .word-token.hinted{background:rgba(255,158,181,0.25);}
+  .type-it-answer{ max-width:520px; margin:0 auto; }
+  .reveal-box{
+    max-width:520px; margin:18px auto 0; background:rgba(255,255,255,0.7); border:1px solid var(--line);
+    border-radius:10px; padding:16px 18px;
+  }
+  .reveal-box .label{font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--rose-700); font-weight:700; margin-bottom:6px;}
+  .self-mark{display:flex; gap:10px; justify-content:center; margin-top:16px;}
 
   .empty-state{text-align:center; padding:50px 20px; color:var(--muted);}
   .empty-state .icon{font-size:2rem; margin-bottom:12px; opacity:0.6;}
-
   .status-line{font-size:0.85rem;}
   .status-line.loading{color:var(--rose-700);}
   .status-line.ready{color:var(--good);}
   .status-line.error{color:var(--bad);}
-
   .spinner{
     display:inline-block; width:14px; height:14px; border:2px solid rgba(216,91,140,0.25);
     border-top-color:var(--rose-600); border-radius:50%; animation:spin 0.7s linear infinite;
@@ -214,28 +190,19 @@
   }
   @keyframes spin{to{transform:rotate(360deg);}}
 
-  .sbs-header{
-    display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:0 14px 10px;
-    border-bottom:2px solid var(--line); margin-bottom:6px;
-  }
+  .sbs-header{ display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:0 14px 10px; border-bottom:2px solid var(--line); margin-bottom:6px; }
   .sbs-header span{ font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--rose-700); font-weight:700; }
   .sbs-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:12px 14px; border-bottom:1px solid var(--line); }
   .sbs-row:nth-child(odd){background:rgba(255,255,255,0.35);}
   .sbs-es{font-size:1.05rem;}
   .sbs-en{font-size:1.02rem; color:var(--muted); font-style:italic;}
   .sbs-note{font-size:0.78rem; color:var(--muted); margin-bottom:14px;}
-
-  @media (max-width:640px){
-    .sbs-header{grid-template-columns:1fr;}
-    .sbs-row{grid-template-columns:1fr; gap:4px; padding:14px;}
-  }
+  @media (max-width:640px){ .sbs-header{grid-template-columns:1fr;} .sbs-row{grid-template-columns:1fr; gap:4px; padding:14px;} }
 
   footer{ text-align:center; color:var(--muted); font-size:0.8rem; margin-top:60px; opacity:0.8; }
 
-  @media (prefers-reduced-motion: reduce){
-    .flame{animation:none;} .spinner{animation:none;} *{transition:none !important; animation:none !important;}
-  }
-  @media (max-width:600px){ .wrap{padding:32px 16px 80px;} .card{padding:20px;} }
+  @media (prefers-reduced-motion: reduce){ .flame{animation:none;} .spinner{animation:none;} *{transition:none !important; animation:none !important;} }
+  @media (max-width:600px){ .wrap{padding:32px 16px 80px;} .card{padding:20px;} .fill-row{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -254,6 +221,7 @@
     <button class="tab-btn" data-tab="sidebyside">Side by Side</button>
     <button class="tab-btn" data-tab="bank">Word Bank</button>
     <button class="tab-btn" data-tab="quiz">Quiz</button>
+    <button class="tab-btn" data-tab="typeit">Type It</button>
   </nav>
 
   <!-- INPUT TAB -->
@@ -261,7 +229,7 @@
     <div class="card">
       <span class="eyebrow">Step 1</span>
       <h2>Bring your own lyrics</h2>
-      <p class="desc">Copy the Spanish lyrics from wherever you're listening and paste them below. Cancionario never ships lyrics for you — that keeps it usable (and shareable) for any song, legally.</p>
+      <p class="desc">Paste lyrics below. Cancionario never ships lyrics itself — that keeps it usable (and shareable) for any song. Save songs to <strong>My Library</strong> below so you can pick them from a list next time, without retyping.</p>
 
       <label class="field-label" for="song-title">Song &amp; artist</label>
       <input type="text" id="song-title" placeholder="e.g. Mi Santa — Romeo Santos" style="margin-bottom:18px;">
@@ -277,12 +245,19 @@
 
       <div class="row" style="margin-top:22px;">
         <button class="btn" id="load-song-btn">Load Song →</button>
+        <button class="btn ghost" id="save-library-btn">Save to My Library</button>
         <span id="input-status" class="status-line"></span>
       </div>
 
+      <details class="advanced" open>
+        <summary>My Library (saved only in this browser)</summary>
+        <p class="desc">Songs you save stay on this device — pick one to reload it instantly.</p>
+        <div class="library-list" id="library-list"></div>
+      </details>
+
       <details class="advanced">
         <summary>Optional: enable live AI translation</summary>
-        <p class="desc">Cancionario always checks a large built-in Spanish→English dictionary first — that part works everywhere, including once this page is hosted on its own. For words the dictionary doesn't recognize, you can either translate them yourself with one tap, or paste your own Anthropic API key here so the app can look them up automatically. Your key stays in your browser only — it's never sent anywhere but Anthropic's API, and it's not saved anywhere by whoever shares this page with you.</p>
+        <p class="desc">The dictionary + quick-fill panel already get you to 100% translated without any key. If you'd rather have unknown words filled in automatically, paste your own Anthropic API key here — it stays in your browser only.</p>
         <label class="field-label" for="api-key-input">Anthropic API key</label>
         <input type="password" id="api-key-input" placeholder="sk-ant-...">
         <div class="row" style="margin-top:12px;">
@@ -333,7 +308,7 @@
   <!-- BANK TAB -->
   <section id="bank">
     <div class="card">
-      <span class="eyebrow" id="bank-eyebrow">Vocabulary</span>
+      <span class="eyebrow">Vocabulary</span>
       <h2 id="bank-title">Word Bank</h2>
       <p class="desc" id="bank-desc">Every unique word from your song, in one place.</p>
       <div id="bank-empty" class="empty-state">
@@ -341,6 +316,17 @@
         <p>Load a song first to build its word bank.</p>
       </div>
       <div class="bank-grid" id="bank-grid"></div>
+    </div>
+
+    <div class="card" id="fill-card" style="display:none;">
+      <span class="eyebrow">Get to 100%</span>
+      <h2>Quick-fill remaining words</h2>
+      <p class="desc">Anything the dictionary didn't catch, in one fast pass. Type a translation for each and save.</p>
+      <div class="fill-list" id="fill-list"></div>
+      <div class="row" style="margin-top:16px;">
+        <button class="btn" id="save-fill-btn">Save All</button>
+        <span id="fill-status" style="color:var(--muted); font-size:0.85rem;"></span>
+      </div>
     </div>
   </section>
 
@@ -354,31 +340,94 @@
       <div id="quiz-setup" style="display:none;">
         <span class="eyebrow">Step 2</span>
         <h2>Test yourself</h2>
-        <p class="desc">Multiple choice, drawn straight from this song's vocabulary.</p>
+        <p class="desc">Multiple choice, drawn straight from this song's vocabulary. Pick how many words to cover:</p>
+        <div class="length-picker" id="length-picker">
+          <button class="chip selected" data-len="10">10 words</button>
+          <button class="chip" data-len="20">20 words</button>
+          <button class="chip" data-len="50">50 words</button>
+          <button class="chip" data-len="100">100 words</button>
+        </div>
         <div class="row">
           <button class="btn" id="start-quiz-btn">Start Quiz</button>
           <span id="quiz-info" style="color:var(--muted); font-size:0.85rem;"></span>
         </div>
       </div>
       <div id="quiz-play" style="display:none;">
-        <div class="quiz-progress">
-          <span id="quiz-count"></span>
-          <span id="quiz-score"></span>
-        </div>
+        <div class="quiz-progress"><span id="quiz-count"></span><span id="quiz-score"></span></div>
         <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="quiz-question" id="quiz-question"></div>
         <div class="quiz-options" id="quiz-options"></div>
+        <div class="row" style="justify-content:center; margin-top:22px;">
+          <button class="btn ghost small" id="startover-quiz-btn">Start Over</button>
+        </div>
       </div>
       <div id="quiz-result" style="display:none;" class="quiz-result">
         <div class="eyebrow">Result</div>
         <div class="score" id="final-score"></div>
         <p id="final-msg" style="color:var(--muted);"></p>
-        <button class="btn" id="retry-quiz-btn">Try Again</button>
+        <div class="row" style="justify-content:center;">
+          <button class="btn" id="retry-quiz-btn">Try Again</button>
+          <button class="btn ghost" id="startover-quiz-result-btn">Start Over</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>Cancionario · learn the language a song at a time</footer>
+  <!-- TYPE IT TAB -->
+  <section id="typeit">
+    <div class="card">
+      <div id="typeit-empty" class="empty-state">
+        <div class="icon">✍</div>
+        <p>Load a song first — you'll see a line in Spanish and type its English translation.</p>
+      </div>
+      <div id="typeit-setup" style="display:none;">
+        <span class="eyebrow">Sentence practice</span>
+        <h2>Type the translation</h2>
+        <p class="desc">Read the Spanish line, type your best English translation, then reveal the reference and mark yourself.</p>
+        <div class="row"><button class="btn" id="start-typeit-btn">Start</button></div>
+      </div>
+      <div id="typeit-play" style="display:none;">
+        <div class="quiz-progress"><span id="typeit-count"></span><span id="typeit-score"></span></div>
+        <div class="progress-track"><div class="progress-fill" id="typeit-progress-fill"></div></div>
+        <div class="type-it-line" id="typeit-line"></div>
+        <div class="hint-area" id="typeit-hint-area"></div>
+        <div class="type-it-answer">
+          <input type="text" id="typeit-input" placeholder="Type your English translation…">
+          <div class="row" style="justify-content:center; margin-top:14px;">
+            <button class="btn ghost" id="typeit-hint-btn">Get a Hint</button>
+            <button class="btn" id="typeit-check-btn">Reveal &amp; Compare</button>
+          </div>
+        </div>
+        <div class="reveal-box" id="typeit-reveal" style="display:none;">
+          <div class="label">Reference translation</div>
+          <div id="typeit-reference"></div>
+        </div>
+        <div class="self-mark" id="typeit-selfmark" style="display:none;">
+          <button class="btn ghost small" id="mark-wrong-btn">I got it wrong</button>
+          <button class="btn small" id="mark-right-btn">I got it right</button>
+        </div>
+        <div class="popup" id="ti-word-popup">
+          <span class="word-es" id="ti-popup-es"></span><span class="word-pos" id="ti-popup-pos"></span>
+          <div class="word-en" id="ti-popup-en"></div>
+          <div class="word-note" id="ti-popup-note"></div>
+        </div>
+        <div class="row" style="justify-content:center; margin-top:22px;">
+          <button class="btn ghost small" id="startover-typeit-btn">Start Over</button>
+        </div>
+      </div>
+      <div id="typeit-result" style="display:none;" class="quiz-result">
+        <div class="eyebrow">Result</div>
+        <div class="score" id="typeit-final-score"></div>
+        <p id="typeit-final-msg" style="color:var(--muted);"></p>
+        <div class="row" style="justify-content:center;">
+          <button class="btn" id="retry-typeit-btn">Try Again</button>
+          <button class="btn ghost" id="startover-typeit-result-btn">Start Over</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Cancionario · learn the language a song at a time<br>Created by Valeriia Vasko, inspired by Rocío Koloffon</footer>
 </div>
 
 <script>
@@ -472,7 +521,48 @@ const DICT = {
   "comer":["to eat","verb"], "como":["I eat / like/as","verb/adv"], "beber":["to drink","verb"],
   "agua":["water","noun"], "cafe":["coffee","noun"], "café":["coffee","noun"],
   "dulce":["sweet","adj"], "amargo":["bitter","adj"], "caliente":["hot","adj"], "frio":["cold","adj"],
-  "frío":["cold","adj"], "rapido":["fast","adj"], "rápido":["fast","adj"], "lento":["slow","adj"]
+  "frío":["cold","adj"], "rapido":["fast","adj"], "rápido":["fast","adj"], "lento":["slow","adj"],
+  "quisiera":["I would like","verb"], "seria":["would be","verb"], "sería":["would be","verb"],
+  "sere":["I will be","verb"], "seré":["I will be","verb"], "seras":["you will be","verb"],
+  "serás":["you will be","verb"], "podria":["could","verb"], "podría":["could","verb"],
+  "deberia":["should","verb"], "debería":["should","verb"], "deber":["should/to owe","verb"],
+  "debo":["I must","verb"], "debes":["you must","verb"], "hasta":["until","prep"],
+  "desde":["since/from","prep"], "entre":["between","prep"], "sobre":["on/about","prep"],
+  "bajo":["under","prep"], "durante":["during","prep"], "contra":["against","prep"],
+  "cada":["each/every","adj"], "otro":["other/another","adj"], "otra":["other (f)","adj"],
+  "mismo":["same","adj"], "misma":["same (f)","adj"], "primero":["first","adj"],
+  "ultimo":["last","adj"], "último":["last","adj"], "nuevo":["new","adj"], "viejo":["old","adj"],
+  "joven":["young","adj"], "verano":["summer","noun"], "invierno":["winter","noun"],
+  "playa":["beach","noun"], "mar":["sea","noun"], "rio":["river","noun"], "río":["river","noun"],
+  "flor":["flower","noun"], "flores":["flowers","noun"], "rosa":["rose/pink","noun/adj"],
+  "blanco":["white","adj"], "negro":["black","adj"], "rojo":["red","adj"], "azul":["blue","adj"],
+  "verde":["green","adj"], "amarillo":["yellow","adj"], "uno":["one","num"], "dos":["two","num"],
+  "tres":["three","num"], "cuatro":["four","num"], "cinco":["five","num"], "diez":["ten","num"],
+  "todos":["everyone/all","pron"], "todas":["everyone/all (f)","pron"], "nadie":["nobody","pron"],
+  "alguien":["someone","pron"], "quien":["who","pron"], "quién":["who","pron"],
+  "cuando":["when","conj"], "cuándo":["when","adv"], "donde":["where","conj"], "dónde":["where","adv"],
+  "como ":["how/like","adv"], "cómo":["how","adv"], "tanto":["so much","adv"], "tan":["so","adv"],
+  "poco":["little/few","adj"], "mucho":["a lot","adj"], "mucha":["a lot (f)","adj"],
+  "despues":["after","adv"], "después":["after","adv"], "antes":["before","adv"],
+  "ahora":["now","adv"], "luego":["then/later","adv"], "todavia":["still/yet","adv"],
+  "todavía":["still/yet","adv"], "ya":["already","adv"], "aun":["even/still","adv"], "aún":["still","adv"],
+  "valorar":["to value","verb"], "valoro":["I value","verb"], "nacer":["to be born","verb"],
+  "comprender":["to understand","verb"], "religion":["religion","noun"], "religión":["religion","noun"],
+  "diosa":["goddess","noun"], "capaz":["capable","adj"], "incapaz":["incapable","adj"],
+  "pacto":["pact","noun"], "fortuna":["fortune, wealth","noun"], "astronauta":["astronaut","noun"],
+  "nadar":["to swim","verb"], "nado":["I swim","verb"], "mar":["sea","noun"], "profundo":["deep","adj"],
+  "encender":["to light","verb"], "enciendo":["I light","verb"], "vela":["candle","noun"],
+  "velita":["little candle","noun"], "oracion":["prayer","noun"], "oración":["prayer","noun"],
+  "arrodillarse":["to kneel","verb"], "arrodillo":["I kneel","verb"], "merced":["mercy, grace","noun"],
+  "sacramento":["sacrament","noun"], "bautizar":["to baptize","verb"], "bautizando":["baptizing","verb"],
+  "aguas":["waters","noun"], "ayunar":["to fast","verb"], "ayuno":["I fast / fasting","verb/noun"],
+  "desafiar":["to challenge","verb"], "desafio":["I challenge","verb"], "desafío":["I challenge","verb"],
+  "desafie":["would challenge","verb"], "desafíe":["would challenge","verb"], "leon":["lion","noun"],
+  "león":["lion","noun"], "mandar":["to command, rule","verb"], "manda":["commands/rules","verb"],
+  "celestial":["heavenly","adj"], "pan":["bread","noun"], "vino":["wine / came","noun/verb"],
+  "templo":["temple","noun"], "devocion":["devotion","noun"], "devoción":["devotion","noun"],
+  "sangre":["blood","noun"], "humilde":["humble","adj"], "vos":["you (regional)","pron"],
+  "regalo":["gift / I give","noun/verb"], "pondre":["I will put","verb"], "pondré":["I will put","verb"]
 };
 
 const DEMOS = {
@@ -496,15 +586,15 @@ Mañana vamos a la playa juntos.`
 
 /* ---------------- State ---------------- */
 let currentSong = { title:"", lines:[], rawLines:[], lineTranslations:null };
-let sessionDict = {};   // words resolved this session: via live API or typed in manually
+let sessionDict = {};
 let wordBank = [];
 let quizState = null;
+let typeItState = null;
+let selectedQuizLen = 10;
 
-/* ---------------- API key handling (stored only in this browser) ---------------- */
+/* ---------------- API key (stored only in this browser) ---------------- */
 const KEY_STORAGE = 'cancionario_api_key';
-function getApiKey(){
-  try{ return localStorage.getItem(KEY_STORAGE) || ''; }catch(e){ return ''; }
-}
+function getApiKey(){ try{ return localStorage.getItem(KEY_STORAGE) || ''; }catch(e){ return ''; } }
 document.getElementById('api-key-input').value = getApiKey();
 document.getElementById('save-key-btn').addEventListener('click', ()=>{
   const val = document.getElementById('api-key-input').value.trim();
@@ -520,16 +610,72 @@ document.getElementById('clear-key-btn').addEventListener('click', ()=>{
   document.getElementById('key-status').textContent = 'Cleared.';
 });
 
-/* ---------------- Tabs ---------------- */
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=> switchTab(btn.dataset.tab));
+/* ---------------- My Library (songs saved only in this browser) ---------------- */
+const LIB_STORAGE = 'cancionario_library';
+function getLibrary(){ try{ return JSON.parse(localStorage.getItem(LIB_STORAGE) || '[]'); }catch(e){ return []; } }
+function setLibrary(list){ try{ localStorage.setItem(LIB_STORAGE, JSON.stringify(list)); }catch(e){} }
+function renderLibrary(){
+  const list = getLibrary();
+  const el = document.getElementById('library-list');
+  el.innerHTML = '';
+  if(list.length === 0){
+    el.innerHTML = '<span style="color:var(--muted); font-size:0.85rem;">No saved songs yet.</span>';
+    return;
+  }
+  list.forEach((song, i)=>{
+    const row = document.createElement('div');
+    row.className = 'library-item';
+    row.innerHTML = `<span class="name">${song.title}</span>`;
+    const actions = document.createElement('div');
+    actions.className = 'actions';
+    const loadBtn2 = document.createElement('button');
+    loadBtn2.className = 'btn ghost small'; loadBtn2.textContent = 'Load';
+    loadBtn2.addEventListener('click', ()=>{
+      document.getElementById('song-title').value = song.title;
+      document.getElementById('lyrics-input').value = song.lyrics;
+      document.getElementById('load-song-btn').click();
+    });
+    const delBtn = document.createElement('button');
+    delBtn.className = 'btn ghost small'; delBtn.textContent = 'Delete';
+    delBtn.addEventListener('click', ()=>{
+      const updated = getLibrary().filter((_, idx)=>idx!==i);
+      setLibrary(updated);
+      renderLibrary();
+    });
+    actions.appendChild(loadBtn2); actions.appendChild(delBtn);
+    row.appendChild(actions);
+    el.appendChild(row);
+  });
+}
+renderLibrary();
+document.getElementById('save-library-btn').addEventListener('click', ()=>{
+  const title = document.getElementById('song-title').value.trim() || "Untitled song";
+  const lyrics = document.getElementById('lyrics-input').value.trim();
+  const status = document.getElementById('input-status');
+  if(!lyrics){ status.textContent = "Paste some lyrics first."; status.className = "status-line error"; return; }
+  const list = getLibrary();
+  list.push({ title, lyrics });
+  setLibrary(list);
+  renderLibrary();
+  status.textContent = `Saved "${title}" to My Library.`;
+  status.className = "status-line ready";
 });
-function switchTab(id){
+
+/* ---------------- Tabs ---------------- */
+const TAB_IDS = ['input','read','sidebyside','bank','quiz','typeit'];
+document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click', ()=> switchTab(btn.dataset.tab, true)); });
+function switchTab(id, updateHash){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===id));
   document.querySelectorAll('section').forEach(s=>s.classList.toggle('active', s.id===id));
+  if(updateHash){ history.replaceState(null, '', '#' + id); }
 }
-
-document.querySelectorAll('.chip').forEach(chip=>{
+function openTabFromHash(){
+  const id = window.location.hash.replace('#', '');
+  if(TAB_IDS.includes(id)) switchTab(id, false);
+}
+window.addEventListener('hashchange', openTabFromHash);
+openTabFromHash();
+document.querySelectorAll('.chip[data-demo]').forEach(chip=>{
   chip.addEventListener('click', ()=>{
     const demo = DEMOS[chip.dataset.demo];
     document.getElementById('song-title').value = demo.title;
@@ -538,16 +684,14 @@ document.querySelectorAll('.chip').forEach(chip=>{
 });
 
 /* ---------------- Helpers ---------------- */
-function cleanWord(w){
-  return w.toLowerCase().replace(/[.,!?¡¿"“”'’();:—-]/g,'').trim();
-}
+function cleanWord(w){ return w.toLowerCase().replace(/[.,!?¡¿"“”'’();:—-]/g,'').trim(); }
 function lookupLocal(word){
   if(sessionDict[word]) return sessionDict[word];
   if(DICT[word]) return DICT[word];
   return null;
 }
 
-/* ---------------- Live translation (optional, needs an API key once hosted outside Claude) ---------------- */
+/* ---------------- Live translation (optional) ---------------- */
 async function callClaude(prompt, maxTokens){
   const key = getApiKey();
   const headers = { "Content-Type": "application/json" };
@@ -557,8 +701,7 @@ async function callClaude(prompt, maxTokens){
     headers["anthropic-dangerous-direct-browser-access"] = "true";
   }
   const response = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers,
+    method: "POST", headers,
     body: JSON.stringify({
       model: key ? "claude-sonnet-5" : "claude-sonnet-4-6",
       max_tokens: maxTokens || 1000,
@@ -569,9 +712,7 @@ async function callClaude(prompt, maxTokens){
   const data = await response.json();
   return (data.content || []).filter(b => b.type === "text").map(b => b.text).join("\n");
 }
-function parseJsonLoose(text){
-  return JSON.parse(text.replace(/```json/gi, '').replace(/```/g, '').trim());
-}
+function parseJsonLoose(text){ return JSON.parse(text.replace(/```json/gi, '').replace(/```/g, '').trim()); }
 
 async function tryLiveWordTranslation(words){
   if(words.length === 0) return;
@@ -580,7 +721,6 @@ async function tryLiveWordTranslation(words){
   const parsed = parseJsonLoose(text);
   Object.keys(parsed).forEach(w=>{ if(words.includes(w)) sessionDict[w] = parsed[w]; });
 }
-
 async function tryLiveLineTranslation(lines){
   if(lines.length === 0) return null;
   const prompt = `Translate each of these Spanish song lines into natural English, one line at a time, preserving order. Respond with ONLY a raw JSON array of strings, no markdown fences, no explanation, exactly ${lines.length} items. Lines: ${JSON.stringify(lines)}`;
@@ -589,15 +729,10 @@ async function tryLiveLineTranslation(lines){
   if(Array.isArray(parsed) && parsed.length === lines.length) return parsed;
   throw new Error("shape mismatch");
 }
-
-/* Word-for-word fallback gloss, built entirely from the local dictionary — works with no network at all */
 function glossLine(lineTokens){
   const words = lineTokens.filter(t=>!t.isSpace && t.clean);
   if(words.length === 0) return '';
-  return words.map(t=>{
-    const entry = lookupLocal(t.clean);
-    return entry ? entry[0] : `[${t.clean}?]`;
-  }).join(' · ');
+  return words.map(t=>{ const entry = lookupLocal(t.clean); return entry ? entry[0] : `[${t.clean}?]`; }).join(' · ');
 }
 
 /* ---------------- Load song ---------------- */
@@ -606,11 +741,7 @@ loadBtn.addEventListener('click', async ()=>{
   const title = document.getElementById('song-title').value.trim() || "Untitled song";
   const raw = document.getElementById('lyrics-input').value.trim();
   const status = document.getElementById('input-status');
-  if(!raw){
-    status.textContent = "Paste some lyrics first.";
-    status.className = "status-line error";
-    return;
-  }
+  if(!raw){ status.textContent = "Paste some lyrics first."; status.className = "status-line error"; return; }
 
   const rawLines = raw.split('\n').filter(l=>l.trim().length>0);
   const tokenLines = rawLines.map(line=>{
@@ -623,17 +754,10 @@ loadBtn.addEventListener('click', async ()=>{
   currentSong = { title, lines: tokenLines, rawLines, lineTranslations: null };
 
   buildWordBank();
-  renderReadTab();
-  renderBankTab();
-  renderQuizSetup();
-  renderSideBySide();
+  renderReadTab(); renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide(); renderTypeItSetup();
   switchTab('read');
 
-  const uniqueUnknown = [...new Set(
-    tokenLines.flat().filter(t=>!t.isSpace && t.clean && !DICT[t.clean]).map(t=>t.clean)
-  )];
-
-  const hasKey = !!getApiKey();
+  const uniqueUnknown = [...new Set(tokenLines.flat().filter(t=>!t.isSpace && t.clean && !DICT[t.clean]).map(t=>t.clean))];
   loadBtn.disabled = true;
   status.innerHTML = `<span class="spinner"></span>Checking for live translation…`;
   status.className = "status-line loading";
@@ -646,15 +770,10 @@ loadBtn.addEventListener('click', async ()=>{
     ]);
     liveWorked = true;
   }catch(e){
-    // No live translation available (no key, or hosted outside Claude with no network) —
-    // that's fine, the dictionary + manual tap-to-translate still cover everything.
     console.warn("Live translation unavailable, using dictionary + manual fallback:", e);
   }finally{
     buildWordBank();
-    renderReadTab();
-    renderBankTab();
-    renderQuizSetup();
-    renderSideBySide();
+    renderReadTab(); renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide(); renderTypeItSetup();
     loadBtn.disabled = false;
     const knownCount = wordBank.filter(w=>w.known).length;
     if(liveWorked){
@@ -662,13 +781,13 @@ loadBtn.addEventListener('click', async ()=>{
     } else if(knownCount === wordBank.length){
       status.textContent = `"${title}" loaded — all ${wordBank.length} words found in the dictionary.`;
     } else {
-      status.textContent = `"${title}" loaded — ${knownCount}/${wordBank.length} words known so far. Tap the rest in Read & Tap${hasKey? '' : ', or add an API key above for automatic translation'}.`;
+      status.textContent = `"${title}" loaded — ${knownCount}/${wordBank.length} words known. Use Quick-fill in Word Bank to reach 100%.`;
     }
     status.className = "status-line ready";
   }
 });
 
-/* ---------------- Build word bank ---------------- */
+/* ---------------- Word bank ---------------- */
 function buildWordBank(){
   const seen = new Set();
   wordBank = [];
@@ -677,16 +796,10 @@ function buildWordBank(){
     if(seen.has(tok.clean)) return;
     seen.add(tok.clean);
     const entry = lookupLocal(tok.clean);
-    wordBank.push({
-      word: tok.clean,
-      translation: entry ? entry[0] : null,
-      pos: entry ? entry[1] : null,
-      known: !!entry
-    });
+    wordBank.push({ word: tok.clean, translation: entry ? entry[0] : null, pos: entry ? entry[1] : null, known: !!entry });
   });
 }
 
-/* ---------------- Render read tab ---------------- */
 function renderReadTab(){
   document.getElementById('read-empty').style.display = 'none';
   document.getElementById('read-content').style.display = 'block';
@@ -712,18 +825,24 @@ function renderReadTab(){
 }
 
 function showWordPopup(word, el){
+  showWordPopupGeneric(word, el, {
+    popup:'word-popup', es:'popup-es', pos:'popup-pos', en:'popup-en', note:'popup-note'
+  }, ()=> renderReadTab());
+}
+
+function showWordPopupGeneric(word, el, ids, afterSave){
   document.querySelectorAll('.word-token.selected').forEach(s=>s.classList.remove('selected'));
   el.classList.add('selected');
-  const popup = document.getElementById('word-popup');
+  const popup = document.getElementById(ids.popup);
   const entry = lookupLocal(word);
-  document.getElementById('popup-es').textContent = word;
+  document.getElementById(ids.es).textContent = word;
   if(entry){
-    document.getElementById('popup-pos').textContent = entry[1];
-    document.getElementById('popup-en').textContent = entry[0];
-    document.getElementById('popup-note').textContent = '';
+    document.getElementById(ids.pos).textContent = entry[1];
+    document.getElementById(ids.en).textContent = entry[0];
+    document.getElementById(ids.note).textContent = '';
   } else {
-    document.getElementById('popup-pos').textContent = 'not translated yet';
-    document.getElementById('popup-en').innerHTML = '';
+    document.getElementById(ids.pos).textContent = 'not translated yet';
+    document.getElementById(ids.en).innerHTML = '';
     const input = document.createElement('input');
     input.type = 'text';
     input.placeholder = 'Type its translation and press Enter…';
@@ -731,21 +850,18 @@ function showWordPopup(word, el){
       if(e.key === 'Enter' && input.value.trim()){
         sessionDict[word] = [input.value.trim(), 'custom'];
         buildWordBank();
-        renderReadTab();
-        renderBankTab();
-        renderQuizSetup();
-        renderSideBySide();
+        renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide();
+        if(afterSave) afterSave();
         const refreshed = document.querySelector('.word-token.selected') || el;
-        showWordPopup(word, refreshed);
+        showWordPopupGeneric(word, refreshed, ids, afterSave);
       }
     });
-    document.getElementById('popup-en').appendChild(input);
-    document.getElementById('popup-note').textContent = "This word isn't in the dictionary — add your own translation, it'll be remembered for the rest of this visit.";
+    document.getElementById(ids.en).appendChild(input);
+    document.getElementById(ids.note).textContent = "This word isn't in the dictionary — add your own translation.";
   }
   popup.classList.add('show');
 }
 
-/* ---------------- Render side by side tab ---------------- */
 function renderSideBySide(){
   document.getElementById('sbs-empty').style.display = 'none';
   document.getElementById('sbs-content').style.display = 'block';
@@ -753,7 +869,7 @@ function renderSideBySide(){
   const usingLive = Array.isArray(currentSong.lineTranslations);
   document.getElementById('sbs-note').textContent = usingLive
     ? 'Full line-by-line translation.'
-    : 'Word-for-word gloss from the dictionary (no live translation available) — words marked [word?] need a translation, add them in Read & Tap.';
+    : 'Word-for-word gloss from the dictionary — words marked [word?] need a translation, add them in Read & Tap or Quick-fill.';
   const body = document.getElementById('sbs-body');
   body.innerHTML = '';
   currentSong.rawLines.forEach((line, i)=>{
@@ -765,13 +881,11 @@ function renderSideBySide(){
   });
 }
 
-/* ---------------- Render bank tab ---------------- */
 function renderBankTab(){
   const grid = document.getElementById('bank-grid');
   const empty = document.getElementById('bank-empty');
   if(wordBank.length === 0){
-    empty.style.display = 'block';
-    grid.innerHTML = '';
+    empty.style.display = 'block'; grid.innerHTML = '';
     document.getElementById('bank-title').textContent = 'Word Bank';
     document.getElementById('bank-desc').textContent = 'Every unique word from your song, in one place.';
     return;
@@ -784,37 +898,73 @@ function renderBankTab(){
   wordBank.forEach(w=>{
     const div = document.createElement('div');
     div.className = 'bank-item';
-    div.innerHTML = `<div class="es">${w.word}</div><div class="en ${w.known?'':'unresolved'}">${w.known ? w.translation : 'tap it in Read & Tap →'}</div>`;
+    div.innerHTML = `<div class="es">${w.word}</div><div class="en">${w.known ? w.translation : 'not yet translated'}</div>`;
     grid.appendChild(div);
   });
 }
 
+function renderFillPanel(){
+  const card = document.getElementById('fill-card');
+  const unresolved = wordBank.filter(w=>!w.known);
+  if(unresolved.length === 0){ card.style.display = 'none'; return; }
+  card.style.display = 'block';
+  const list = document.getElementById('fill-list');
+  list.innerHTML = '';
+  unresolved.forEach(w=>{
+    const row = document.createElement('div');
+    row.className = 'fill-row';
+    row.innerHTML = `<span class="es">${w.word}</span>`;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'English translation…';
+    input.dataset.word = w.word;
+    row.appendChild(input);
+    list.appendChild(row);
+  });
+  document.getElementById('fill-status').textContent = `${unresolved.length} words remaining`;
+}
+document.getElementById('save-fill-btn').addEventListener('click', ()=>{
+  const inputs = document.querySelectorAll('#fill-list input');
+  let filled = 0;
+  inputs.forEach(input=>{
+    const val = input.value.trim();
+    if(val){ sessionDict[input.dataset.word] = [val, 'custom']; filled++; }
+  });
+  buildWordBank();
+  renderReadTab(); renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide(); renderTypeItSetup();
+  document.getElementById('fill-status').textContent = filled > 0 ? `Saved ${filled} translations.` : 'Nothing to save yet.';
+});
+
 /* ---------------- Quiz ---------------- */
+document.querySelectorAll('#length-picker .chip').forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    document.querySelectorAll('#length-picker .chip').forEach(c=>c.classList.remove('selected'));
+    chip.classList.add('selected');
+    selectedQuizLen = parseInt(chip.dataset.len, 10);
+  });
+});
+
 function renderQuizSetup(){
   const knownWords = wordBank.filter(w=>w.known);
   const empty = document.getElementById('quiz-empty');
   const setup = document.getElementById('quiz-setup');
   document.getElementById('quiz-play').style.display = 'none';
   document.getElementById('quiz-result').style.display = 'none';
-  if(knownWords.length < 4){
-    empty.style.display = 'block';
-    setup.style.display = 'none';
-    return;
-  }
-  empty.style.display = 'none';
-  setup.style.display = 'block';
-  document.getElementById('quiz-info').textContent = `${knownWords.length} translated words available · quiz will cover up to 10`;
+  if(knownWords.length < 4){ empty.style.display = 'block'; setup.style.display = 'none'; return; }
+  empty.style.display = 'none'; setup.style.display = 'block';
+  document.getElementById('quiz-info').textContent = `${knownWords.length} translated words available`;
 }
-
 document.getElementById('start-quiz-btn').addEventListener('click', startQuiz);
 document.getElementById('retry-quiz-btn').addEventListener('click', startQuiz);
+document.getElementById('startover-quiz-btn').addEventListener('click', renderQuizSetup);
+document.getElementById('startover-quiz-result-btn').addEventListener('click', renderQuizSetup);
 
 function startQuiz(){
   const pool = wordBank.filter(w=>w.known);
   const shuffled = [...pool].sort(()=>Math.random()-0.5);
-  const questions = shuffled.slice(0, Math.min(10, shuffled.length)).map(correct=>{
-    const distractors = shuffled.filter(w=>w.word!==correct.word)
-      .sort(()=>Math.random()-0.5).slice(0,3);
+  const count = Math.min(selectedQuizLen, shuffled.length);
+  const questions = shuffled.slice(0, count).map(correct=>{
+    const distractors = shuffled.filter(w=>w.word!==correct.word).sort(()=>Math.random()-0.5).slice(0,3);
     const options = [...distractors, correct].sort(()=>Math.random()-0.5);
     return { word: correct.word, answer: correct.translation, options: options.map(o=>o.translation) };
   });
@@ -824,7 +974,6 @@ function startQuiz(){
   document.getElementById('quiz-play').style.display = 'block';
   renderQuizQuestion();
 }
-
 function renderQuizQuestion(){
   const q = quizState.questions[quizState.index];
   document.getElementById('quiz-count').textContent = `Question ${quizState.index+1} of ${quizState.questions.length}`;
@@ -832,20 +981,16 @@ function renderQuizQuestion(){
   document.getElementById('progress-fill').style.width = `${(quizState.index/quizState.questions.length)*100}%`;
   document.getElementById('quiz-question').textContent = `What does "${q.word}" mean?`;
   const optionsDiv = document.getElementById('quiz-options');
-  optionsDiv.innerHTML = '';
-  quizState.answered = false;
+  optionsDiv.innerHTML = ''; quizState.answered = false;
   q.options.forEach(opt=>{
     const btn = document.createElement('button');
-    btn.className = 'quiz-option';
-    btn.textContent = opt;
+    btn.className = 'quiz-option'; btn.textContent = opt;
     btn.addEventListener('click', ()=> handleQuizAnswer(btn, opt, q.answer));
     optionsDiv.appendChild(btn);
   });
 }
-
 function handleQuizAnswer(btn, chosen, correct){
-  if(quizState.answered) return;
-  quizState.answered = true;
+  if(quizState.answered) return; quizState.answered = true;
   document.querySelectorAll('.quiz-option').forEach(b=>{
     b.disabled = true;
     if(b.textContent === correct) b.classList.add('correct');
@@ -854,17 +999,14 @@ function handleQuizAnswer(btn, chosen, correct){
   if(chosen === correct) quizState.score++;
   setTimeout(()=>{
     quizState.index++;
-    if(quizState.index < quizState.questions.length) renderQuizQuestion();
-    else finishQuiz();
+    if(quizState.index < quizState.questions.length) renderQuizQuestion(); else finishQuiz();
   }, 900);
 }
-
 function finishQuiz(){
   document.getElementById('quiz-play').style.display = 'none';
   document.getElementById('quiz-result').style.display = 'block';
   document.getElementById('progress-fill').style.width = '100%';
-  const total = quizState.questions.length;
-  const score = quizState.score;
+  const total = quizState.questions.length, score = quizState.score;
   document.getElementById('final-score').textContent = `${score} / ${total}`;
   const pct = score/total;
   let msg;
@@ -873,6 +1015,114 @@ function finishQuiz(){
   else if(pct >= 0.4) msg = "Getting there. A second pass through Read & Tap will help.";
   else msg = "Early days. Re-read the lyrics slowly, then try again.";
   document.getElementById('final-msg').textContent = msg;
+}
+
+/* ---------------- Type It exercise ---------------- */
+function renderTypeItSetup(){
+  const empty = document.getElementById('typeit-empty');
+  const setup = document.getElementById('typeit-setup');
+  document.getElementById('typeit-play').style.display = 'none';
+  document.getElementById('typeit-result').style.display = 'none';
+  if(currentSong.rawLines.length === 0){ empty.style.display = 'block'; setup.style.display = 'none'; return; }
+  empty.style.display = 'none'; setup.style.display = 'block';
+}
+document.getElementById('start-typeit-btn').addEventListener('click', startTypeIt);
+document.getElementById('retry-typeit-btn').addEventListener('click', startTypeIt);
+document.getElementById('startover-typeit-btn').addEventListener('click', renderTypeItSetup);
+document.getElementById('startover-typeit-result-btn').addEventListener('click', renderTypeItSetup);
+
+function referenceForLine(i){
+  return Array.isArray(currentSong.lineTranslations) ? currentSong.lineTranslations[i] : glossLine(currentSong.lines[i]);
+}
+function startTypeIt(){
+  const indices = currentSong.rawLines.map((_, i)=>i).sort(()=>Math.random()-0.5).slice(0, Math.min(10, currentSong.rawLines.length));
+  typeItState = { indices, pos:0, score:0 };
+  document.getElementById('typeit-setup').style.display = 'none';
+  document.getElementById('typeit-result').style.display = 'none';
+  document.getElementById('typeit-play').style.display = 'block';
+  renderTypeItLine();
+}
+function renderTypeItLine(){
+  const i = typeItState.indices[typeItState.pos];
+  document.getElementById('typeit-count').textContent = `Line ${typeItState.pos+1} of ${typeItState.indices.length}`;
+  document.getElementById('typeit-score').textContent = `Score: ${typeItState.score}`;
+  document.getElementById('typeit-progress-fill').style.width = `${(typeItState.pos/typeItState.indices.length)*100}%`;
+
+  // Render the line as tappable word tokens so a word can be pointed at for its translation
+  const lineEl = document.getElementById('typeit-line');
+  lineEl.innerHTML = '';
+  const tokens = currentSong.lines[i];
+  const seenWords = [];
+  tokens.forEach(tok=>{
+    if(tok.isSpace){ lineEl.appendChild(document.createTextNode(tok.raw)); return; }
+    const span = document.createElement('span');
+    span.className = 'word-token';
+    span.textContent = tok.raw;
+    span.dataset.clean = tok.clean;
+    const entry = lookupLocal(tok.clean);
+    if(!entry) span.classList.add('pending');
+    span.addEventListener('click', ()=> showWordPopupGeneric(tok.clean, span, {
+      popup:'ti-word-popup', es:'ti-popup-es', pos:'ti-popup-pos', en:'ti-popup-en', note:'ti-popup-note'
+    }, ()=> renderTypeItLine()));
+    lineEl.appendChild(span);
+    if(!seenWords.includes(tok.clean)) seenWords.push(tok.clean);
+  });
+
+  typeItState.hintWords = seenWords;
+  typeItState.hintsGiven = 0;
+  document.getElementById('typeit-hint-area').innerHTML = '';
+  document.getElementById('typeit-hint-btn').disabled = false;
+  document.getElementById('typeit-hint-btn').textContent = 'Get a Hint';
+
+  document.getElementById('typeit-input').value = '';
+  document.getElementById('typeit-reveal').style.display = 'none';
+  document.getElementById('typeit-selfmark').style.display = 'none';
+  document.getElementById('typeit-check-btn').style.display = 'inline-block';
+  document.getElementById('ti-word-popup').classList.remove('show');
+}
+document.getElementById('typeit-hint-btn').addEventListener('click', ()=>{
+  const words = typeItState.hintWords;
+  if(typeItState.hintsGiven >= words.length) return;
+  const word = words[typeItState.hintsGiven];
+  typeItState.hintsGiven++;
+  const entry = lookupLocal(word);
+  const area = document.getElementById('typeit-hint-area');
+  const line = document.createElement('div');
+  line.className = 'hint-entry';
+  line.textContent = `${word} → ${entry ? entry[0] : 'not translated yet — add it in Read & Tap'}`;
+  area.appendChild(line);
+  document.querySelectorAll(`#typeit-line .word-token[data-clean="${word}"]`).forEach(el=>el.classList.add('hinted'));
+  if(typeItState.hintsGiven >= words.length){
+    document.getElementById('typeit-hint-btn').disabled = true;
+    document.getElementById('typeit-hint-btn').textContent = 'No more hints';
+  }
+});
+document.getElementById('typeit-check-btn').addEventListener('click', ()=>{
+  const i = typeItState.indices[typeItState.pos];
+  document.getElementById('typeit-reference').textContent = referenceForLine(i);
+  document.getElementById('typeit-reveal').style.display = 'block';
+  document.getElementById('typeit-selfmark').style.display = 'flex';
+  document.getElementById('typeit-check-btn').style.display = 'none';
+});
+function advanceTypeIt(gotItRight){
+  if(gotItRight) typeItState.score++;
+  typeItState.pos++;
+  if(typeItState.pos < typeItState.indices.length) renderTypeItLine(); else finishTypeIt();
+}
+document.getElementById('mark-right-btn').addEventListener('click', ()=> advanceTypeIt(true));
+document.getElementById('mark-wrong-btn').addEventListener('click', ()=> advanceTypeIt(false));
+function finishTypeIt(){
+  document.getElementById('typeit-play').style.display = 'none';
+  document.getElementById('typeit-result').style.display = 'block';
+  const total = typeItState.indices.length, score = typeItState.score;
+  document.getElementById('typeit-final-score').textContent = `${score} / ${total}`;
+  const pct = score/total;
+  let msg;
+  if(pct === 1) msg = "Every line, nailed.";
+  else if(pct >= 0.7) msg = "Solid — keep practicing the lines you marked wrong.";
+  else if(pct >= 0.4) msg = "Good start. Side by Side is great for reviewing the misses.";
+  else msg = "Take another pass through Side by Side, then try again.";
+  document.getElementById('typeit-final-msg').textContent = msg;
 }
 </script>
 </body>
