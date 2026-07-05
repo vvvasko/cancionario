@@ -37,18 +37,10 @@
   .wrap{max-width:960px;margin:0 auto;padding:48px 24px 100px;}
 
   header.hero{ text-align:center; padding:20px 0 44px; border-bottom:1px solid var(--line); margin-bottom:36px; position:relative; }
-  .flame{
-    width:10px;height:14px;margin:0 auto 18px;
-    background:linear-gradient(180deg, var(--peach), var(--rose-700));
-    border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
-    box-shadow:0 0 18px 4px rgba(231,84,128,0.4);
-    animation:flicker 2.6s ease-in-out infinite;
-  }
-  @keyframes flicker{
-    0%,100%{transform:scaleY(1) scaleX(1) rotate(0deg); opacity:1;}
-    30%{transform:scaleY(1.08) scaleX(0.94) rotate(-2deg); opacity:0.92;}
-    55%{transform:scaleY(0.92) scaleX(1.05) rotate(2deg); opacity:1;}
-    80%{transform:scaleY(1.05) scaleX(0.97) rotate(-1deg); opacity:0.95;}
+  .dance-icon{ margin:0 auto 18px; display:block; animation:sway 2.6s ease-in-out infinite; transform-origin:50% 92%; }
+  @keyframes sway{
+    0%,100%{transform:rotate(-5deg);}
+    50%{transform:rotate(5deg);}
   }
   h1{ font-family:'Fraunces', serif; font-weight:700; font-size:clamp(2.4rem, 6vw, 3.6rem); margin:0 0 8px; letter-spacing:-0.01em; color:var(--rose-800); }
   h1 em{ font-style:italic; font-weight:500; color:var(--rose-600); }
@@ -201,7 +193,7 @@
 
   footer{ text-align:center; color:var(--muted); font-size:0.8rem; margin-top:60px; opacity:0.8; }
 
-  @media (prefers-reduced-motion: reduce){ .flame{animation:none;} .spinner{animation:none;} *{transition:none !important; animation:none !important;} }
+  @media (prefers-reduced-motion: reduce){ .dance-icon{animation:none;} .spinner{animation:none;} *{transition:none !important; animation:none !important;} }
   @media (max-width:600px){ .wrap{padding:32px 16px 80px;} .card{padding:20px;} .fill-row{grid-template-columns:1fr;} }
 </style>
 </head>
@@ -209,10 +201,18 @@
 <div class="wrap">
 
   <header class="hero">
-    <div class="flame"></div>
+    <svg class="dance-icon" width="58" height="58" viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="38" cy="30" rx="7" ry="7" fill="#a8365f"/>
+      <path d="M38 37 Q28 45 30 60 Q31 72 24 82 Q34 80 38 68 Q42 80 50 84 Q46 70 42 60 Q46 46 38 37 Z" fill="#e75480"/>
+      <path d="M30 46 Q18 44 12 34" stroke="#e75480" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="64" cy="26" rx="7" ry="7" fill="#a8365f"/>
+      <path d="M64 33 Q74 42 71 58 Q70 71 77 80 Q67 79 62 66 Q59 79 51 83 Q56 68 59 58 Q55 44 64 33 Z" fill="#d1467a"/>
+      <path d="M71 44 Q83 41 88 30" stroke="#d1467a" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M42 58 Q51 52 60 58" stroke="#a8365f" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
     <div class="eyebrow">A devotional way to learn Spanish</div>
     <h1>Cancion<em>ario</em></h1>
-    <p class="tagline">Paste the lyrics of any Spanish song, tap a word to hear its meaning, read it side by side in English, then test what stuck.</p>
+    <p class="tagline">Paste the lyrics of any Spanish song, tap a word to see its meaning, read it side by side in English, then do some tests to practice your Spanish.</p>
   </header>
 
   <nav class="tabs">
@@ -245,26 +245,13 @@
 
       <div class="row" style="margin-top:22px;">
         <button class="btn" id="load-song-btn">Load Song →</button>
-        <button class="btn ghost" id="save-library-btn">Save to My Library</button>
         <span id="input-status" class="status-line"></span>
       </div>
 
       <details class="advanced" open>
-        <summary>My Library (saved only in this browser)</summary>
-        <p class="desc">Songs you save stay on this device — pick one to reload it instantly.</p>
+        <summary>My Library (saved automatically in this browser)</summary>
+        <p class="desc">Every song you load is saved here automatically — pick one to reload it instantly, on this device only.</p>
         <div class="library-list" id="library-list"></div>
-      </details>
-
-      <details class="advanced">
-        <summary>Optional: enable live AI translation</summary>
-        <p class="desc">The dictionary + quick-fill panel already get you to 100% translated without any key. If you'd rather have unknown words filled in automatically, paste your own Anthropic API key here — it stays in your browser only.</p>
-        <label class="field-label" for="api-key-input">Anthropic API key</label>
-        <input type="password" id="api-key-input" placeholder="sk-ant-...">
-        <div class="row" style="margin-top:12px;">
-          <button class="btn ghost small" id="save-key-btn">Save key in this browser</button>
-          <button class="btn ghost small" id="clear-key-btn">Clear key</button>
-          <span id="key-status" style="color:var(--muted); font-size:0.82rem;"></span>
-        </div>
       </details>
     </div>
   </section>
@@ -565,6 +552,172 @@ const DICT = {
   "regalo":["gift / I give","noun/verb"], "pondre":["I will put","verb"], "pondré":["I will put","verb"]
 };
 
+/* Extra dictionary for song lyrics, slang, conjugations and devotional/romantic vocabulary. */
+Object.assign(DICT, {
+  "momento":["moment","noun"],
+  "momentos":["moments","noun"],
+  "peor":["worst","adj"],
+  "comprender":["to understand","verb"],
+  "querer":["love / affection / to want","verb/noun"],
+  "diosa":["goddess","noun"],
+  "cualquier":["any / whichever","adj"],
+  "incapaz":["impossible / incapable","adj"],
+  "pacto":["pact","noun"],
+  "ofrecer":["to offer","verb"],
+  "ofrezco":["I offer","verb"],
+  "entero":["whole / entire","adj"],
+  "entera":["whole / entire","adj"],
+  "pensar":["to think","verb"],
+  "futuro":["future","noun"],
+  "perder":["to lose","verb"],
+  "regalar":["to gift / to give","verb"],
+  "regalo":["I give / gift","verb/noun"],
+  "fortuna":["fortune / wealth","noun"],
+  "llevar":["to take / to carry","verb"],
+  "llevarte":["to take you / to bring you","verb"],
+  "cuando":["when / whenever","conj"],
+  "sea":["may be / be","verb"],
+  "deseas":["you want / you wish","verb"],
+  "nado":["I swim","verb"],
+  "profundo":["deep","adj"],
+  "armario":["closet / wardrobe","noun"],
+  "solamente":["only","adv"],
+  "ay":["oh / ouch","interj"],
+  "pongo":["I put / I place","verb"],
+  "arrodillo":["I kneel","verb"],
+  "arrepiento":["I regret / I repent","verb"],
+  "bautizandome":["baptizing myself","verb"],
+  "bautizándome":["baptizing myself","verb"],
+  "aguas":["waters","noun"],
+  "ayuno":["I fast / fasting","verb/noun"],
+  "pelear":["to fight","verb"],
+  "posible":["possible","adj"],
+  "desafie":["I would challenge","verb"],
+  "desafíe":["I would challenge","verb"],
+  "pides":["you ask / you request","verb"],
+  "convierto":["I turn into / I become","verb"],
+  "tarzan":["Tarzan","name"],
+  "tarzán":["Tarzan","name"],
+  "manda":["commands / rules","verb"],
+  "humilde":["humble","adj"],
+  "devocion":["devotion","noun"],
+  "devoción":["devotion","noun"],
+  "pondre":["I will put / I will place","verb"],
+  "pondré":["I will put / I will place","verb"],
+  "sangre":["blood","noun"],
+  "celestial":["heavenly","adj"],
+  "templo":["temple","noun"],
+  "vos":["you (regional)","pron"],
+  "to":["all","slang"],
+  "toa":["all","slang"],
+  "toda":["all","adj"],
+  "pa":["for / to","slang"],
+  "pa'":["for / to","slang"],
+  "mi":["my / me","pron"],
+  "me":["me / myself","pron"],
+  "le":["to him / to her","pron"],
+  "lo":["it / him / the thing","pron/art"],
+  "ha":["has / is to","verb"],
+  "he":["I have","verb"],
+  "por":["for / because of / by","prep"],
+  "ti":["you","pron"],
+  "en":["in / on / at","prep"],
+  "hasta":["even / until","prep/adv"],
+  "aun":["even / still","adv"],
+  "aún":["still / even","adv"],
+  "aunque":["although / even if","conj"],
+  "como":["as / like / how","adv/conj"],
+  "quien":["who / the one who","pron"],
+  "quién":["who","pron"],
+  "cual":["which / what","pron"],
+  "cuál":["which / what","pron"],
+  "otro":["another / other","adj"],
+  "otra":["another / other","adj"],
+  "hay":["there is / there are","verb"],
+  "ser":["to be","verb"],
+  "seria":["would be","verb"],
+  "sería":["would be","verb"]
+});
+
+
+Object.assign(DICT, {
+  "titi":["auntie / girl asking questions","slang"],
+  "pregunto":["asked / I ask","verb"],
+  "preguntó":["asked","verb"],
+  "portar":["to behave","verb"],
+  "porto":["I behave","verb"],
+  "bonito":["pretty / nicely","adj"],
+  "ojitos":["little eyes","noun"],
+  "lindos":["pretty / cute","adj"],
+  "efecto":["effect","noun"],
+  "mami":["baby / girl / mommy","slang"],
+  "papi":["baby / daddy","slang"],
+  "perreo":["reggaeton dancing","noun"],
+  "perrear":["to dance reggaeton","verb"],
+  "sola":["alone (f)","adj"],
+  "bichote":["big boss / powerful person","slang"],
+  "bellaqueo":["flirty / sexual vibe","slang"],
+  "bellaquear":["to flirt / get turned on","slang"],
+  "janguear":["to hang out / party","verb"],
+  "corillo":["crew / group of friends","noun"],
+  "chavos":["money","slang"],
+  "pichear":["to ignore","verb"],
+  "guayar":["to grind while dancing","verb"],
+  "guayeteo":["grinding dance","slang"],
+  "nene":["baby / boy","slang"],
+  "nena":["baby / girl","slang"],
+  "diabla":["bad girl / she-devil","slang"],
+  "malianteo":["street / gangster vibe","slang"],
+  "frontear":["to show off","verb"],
+  "fronteo":["showing off","noun"],
+  "party":["party","noun"],
+  "botella":["bottle","noun"],
+  "discoteca":["club","noun"],
+  "calle":["street","noun"],
+  "playa":["beach","noun"],
+  "pr":["Puerto Rico","name"],
+  "boricua":["Puerto Rican","noun/adj"]
+});
+
+const NORMALIZE_MAP = {
+  "pa": "para",
+  "pa'": "para",
+  "toa": "toda",
+  "to'a": "toda",
+  "to": "toda",
+  "desafie": "desafíe",
+  "bautizandome": "bautizándome",
+  "religion": "religión",
+  "oracion": "oración",
+  "devocion": "devoción",
+  "leon": "león",
+  "corazon": "corazón",
+  "dios": "dios"
+};
+function stripAccents(value){
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+/* Additional vocabulary merged from uploaded word list (words not already in DICT above) */
+Object.assign(DICT, {
+  "viento":["wind","word"],
+  "lluvia":["rain","word"],
+  "sonreír":["smile","word"],
+  "reír":["laugh","word"],
+  "correr":["run","word"],
+  "caminar":["walk","word"],
+  "fuerte":["strong","word"],
+  "suave":["soft","word"],
+  "verdadero":["true","word"],
+  "esperanza":["hope","word"],
+  "dinero":["money","word"],
+  "abrir":["open","word"],
+  "cerrar":["close","word"],
+  "encontrar":["find","word"],
+  "dormir":["sleep","word"],
+  "despertar":["wake up","word"]
+});
+
 const DEMOS = {
   bachata: {
     title: "Demo — Bachata Phrasebook (original practice lines)",
@@ -584,6 +737,7 @@ Mañana vamos a la playa juntos.`
   }
 };
 
+
 /* ---------------- State ---------------- */
 let currentSong = { title:"", lines:[], rawLines:[], lineTranslations:null };
 let sessionDict = {};
@@ -592,26 +746,9 @@ let quizState = null;
 let typeItState = null;
 let selectedQuizLen = 10;
 
-/* ---------------- API key (stored only in this browser) ---------------- */
-const KEY_STORAGE = 'cancionario_api_key';
-function getApiKey(){ try{ return localStorage.getItem(KEY_STORAGE) || ''; }catch(e){ return ''; } }
-document.getElementById('api-key-input').value = getApiKey();
-document.getElementById('save-key-btn').addEventListener('click', ()=>{
-  const val = document.getElementById('api-key-input').value.trim();
-  const status = document.getElementById('key-status');
-  try{
-    if(val){ localStorage.setItem(KEY_STORAGE, val); status.textContent = 'Saved in this browser.'; }
-    else { status.textContent = 'Enter a key first.'; }
-  }catch(e){ status.textContent = 'Could not save (private browsing?).'; }
-});
-document.getElementById('clear-key-btn').addEventListener('click', ()=>{
-  try{ localStorage.removeItem(KEY_STORAGE); }catch(e){}
-  document.getElementById('api-key-input').value = '';
-  document.getElementById('key-status').textContent = 'Cleared.';
-});
-
-/* ---------------- My Library (songs saved only in this browser) ---------------- */
+/* ---------------- My Library (songs saved automatically, only in this browser) ---------------- */
 const LIB_STORAGE = 'cancionario_library';
+const CURRENT_STORAGE = 'cancionario_current';
 function getLibrary(){ try{ return JSON.parse(localStorage.getItem(LIB_STORAGE) || '[]'); }catch(e){ return []; } }
 function setLibrary(list){ try{ localStorage.setItem(LIB_STORAGE, JSON.stringify(list)); }catch(e){} }
 function renderLibrary(){
@@ -619,7 +756,7 @@ function renderLibrary(){
   const el = document.getElementById('library-list');
   el.innerHTML = '';
   if(list.length === 0){
-    el.innerHTML = '<span style="color:var(--muted); font-size:0.85rem;">No saved songs yet.</span>';
+    el.innerHTML = '<span style="color:var(--muted); font-size:0.85rem;">No saved songs yet — load one and it\'ll appear here.</span>';
     return;
   }
   list.forEach((song, i)=>{
@@ -648,18 +785,52 @@ function renderLibrary(){
   });
 }
 renderLibrary();
-document.getElementById('save-library-btn').addEventListener('click', ()=>{
-  const title = document.getElementById('song-title').value.trim() || "Untitled song";
-  const lyrics = document.getElementById('lyrics-input').value.trim();
-  const status = document.getElementById('input-status');
-  if(!lyrics){ status.textContent = "Paste some lyrics first."; status.className = "status-line error"; return; }
+function autoSaveToLibrary(){
+  if(!currentSong.title || currentSong.rawLines.length === 0) return;
   const list = getLibrary();
-  list.push({ title, lyrics });
+  const idx = list.findIndex(s=>s.title === currentSong.title);
+  const entry = { title: currentSong.title, lyrics: currentSong.rawLines.join('\n') };
+  if(idx >= 0) list[idx] = entry; else list.push(entry);
   setLibrary(list);
   renderLibrary();
-  status.textContent = `Saved "${title}" to My Library.`;
+}
+
+/* ---------------- Persist current song so a page refresh doesn't lose it ---------------- */
+function persistCurrentSong(){
+  if(!currentSong.title || currentSong.rawLines.length === 0) return;
+  try{
+    localStorage.setItem(CURRENT_STORAGE, JSON.stringify({
+      title: currentSong.title,
+      rawLines: currentSong.rawLines,
+      sessionDict: sessionDict,
+      lineTranslations: currentSong.lineTranslations
+    }));
+  }catch(e){}
+  autoSaveToLibrary();
+}
+function restoreCurrentSong(){
+  let saved;
+  try{ saved = JSON.parse(localStorage.getItem(CURRENT_STORAGE) || 'null'); }catch(e){ saved = null; }
+  if(!saved || !saved.rawLines || saved.rawLines.length === 0) return;
+  sessionDict = saved.sessionDict || {};
+  const rawLines = saved.rawLines;
+  const tokenLines = rawLines.map(line=>{
+    const tokens = line.split(/(\s+)/).filter(t=>t.length>0);
+    return tokens.map(tok=>{
+      const isSpace = /^\s+$/.test(tok);
+      return { raw: tok, clean: isSpace? null : cleanWord(tok), isSpace };
+    });
+  });
+  currentSong = { title: saved.title, lines: tokenLines, rawLines, lineTranslations: saved.lineTranslations || null };
+  document.getElementById('song-title').value = saved.title;
+  document.getElementById('lyrics-input').value = rawLines.join('\n');
+  buildWordBank();
+  renderReadTab(); renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide(); renderTypeItSetup();
+  const status = document.getElementById('input-status');
+  const knownCount = wordBank.filter(w=>w.known).length;
+  status.textContent = `"${saved.title}" restored from where you left off — ${knownCount}/${wordBank.length} words translated.`;
   status.className = "status-line ready";
-});
+}
 
 /* ---------------- Tabs ---------------- */
 const TAB_IDS = ['input','read','sidebyside','wordbank','quiz','typeit'];
@@ -674,6 +845,7 @@ function openTabFromHash(){
   if(TAB_IDS.includes(id)) switchTab(id, false);
 }
 window.addEventListener('hashchange', openTabFromHash);
+restoreCurrentSong();
 openTabFromHash();
 document.querySelectorAll('.chip[data-demo]').forEach(chip=>{
   chip.addEventListener('click', ()=>{
@@ -683,52 +855,29 @@ document.querySelectorAll('.chip[data-demo]').forEach(chip=>{
   });
 });
 
-/* ---------------- Helpers ---------------- */
-function cleanWord(w){ return w.toLowerCase().replace(/[.,!?¡¿"“”'’();:—-]/g,'').trim(); }
+ /* ---------------- Helpers ---------------- */
+function cleanWord(w){
+  const cleaned = w
+    .toLowerCase()
+    .replace(/[.,!?¡¿"“”’();:—-]/g,'')
+    .replace(/^'+|'+$/g,'')
+    .trim();
+  return NORMALIZE_MAP[cleaned] || cleaned;
+}
 function lookupLocal(word){
-  if(sessionDict[word]) return sessionDict[word];
-  if(DICT[word]) return DICT[word];
+  const candidates = [
+    word,
+    NORMALIZE_MAP[word],
+    stripAccents(word),
+    NORMALIZE_MAP[stripAccents(word)]
+  ].filter(Boolean);
+  for(const candidate of candidates){
+    if(sessionDict[candidate]) return sessionDict[candidate];
+    if(DICT[candidate]) return DICT[candidate];
+  }
   return null;
 }
 
-/* ---------------- Live translation (optional) ---------------- */
-async function callClaude(prompt, maxTokens){
-  const key = getApiKey();
-  const headers = { "Content-Type": "application/json" };
-  if(key){
-    headers["x-api-key"] = key;
-    headers["anthropic-version"] = "2023-06-01";
-    headers["anthropic-dangerous-direct-browser-access"] = "true";
-  }
-  const response = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST", headers,
-    body: JSON.stringify({
-      model: key ? "claude-sonnet-5" : "claude-sonnet-4-6",
-      max_tokens: maxTokens || 1000,
-      messages: [{ role: "user", content: prompt }]
-    })
-  });
-  if(!response.ok) throw new Error("API request failed: " + response.status);
-  const data = await response.json();
-  return (data.content || []).filter(b => b.type === "text").map(b => b.text).join("\n");
-}
-function parseJsonLoose(text){ return JSON.parse(text.replace(/```json/gi, '').replace(/```/g, '').trim()); }
-
-async function tryLiveWordTranslation(words){
-  if(words.length === 0) return;
-  const prompt = `Translate each of these individual Spanish words or short phrases (from song lyrics) into English for a language-learning app. For each, give the best short English translation (1-4 words) and its part of speech (noun, verb, adj, adv, phrase, interj, pron, prep, conj, or art). Respond with ONLY a raw JSON object, no markdown fences, no explanation — a map of exact input word to a two-item array [translation, partOfSpeech]. Words: ${JSON.stringify(words)}`;
-  const text = await callClaude(prompt, Math.min(1500, 200 + words.length * 25));
-  const parsed = parseJsonLoose(text);
-  Object.keys(parsed).forEach(w=>{ if(words.includes(w)) sessionDict[w] = parsed[w]; });
-}
-async function tryLiveLineTranslation(lines){
-  if(lines.length === 0) return null;
-  const prompt = `Translate each of these Spanish song lines into natural English, one line at a time, preserving order. Respond with ONLY a raw JSON array of strings, no markdown fences, no explanation, exactly ${lines.length} items. Lines: ${JSON.stringify(lines)}`;
-  const text = await callClaude(prompt, Math.min(2000, 200 + lines.length * 40));
-  const parsed = parseJsonLoose(text);
-  if(Array.isArray(parsed) && parsed.length === lines.length) return parsed;
-  throw new Error("shape mismatch");
-}
 function glossLine(lineTokens){
   const words = lineTokens.filter(t=>!t.isSpace && t.clean);
   if(words.length === 0) return '';
@@ -737,7 +886,7 @@ function glossLine(lineTokens){
 
 /* ---------------- Load song ---------------- */
 const loadBtn = document.getElementById('load-song-btn');
-loadBtn.addEventListener('click', async ()=>{
+loadBtn.addEventListener('click', ()=>{
   const title = document.getElementById('song-title').value.trim() || "Untitled song";
   const raw = document.getElementById('lyrics-input').value.trim();
   const status = document.getElementById('input-status');
@@ -755,36 +904,16 @@ loadBtn.addEventListener('click', async ()=>{
 
   buildWordBank();
   renderReadTab(); renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide(); renderTypeItSetup();
+  persistCurrentSong();
   switchTab('read');
 
-  const uniqueUnknown = [...new Set(tokenLines.flat().filter(t=>!t.isSpace && t.clean && !DICT[t.clean]).map(t=>t.clean))];
-  loadBtn.disabled = true;
-  status.innerHTML = `<span class="spinner"></span>Checking for live translation…`;
-  status.className = "status-line loading";
-
-  let liveWorked = false;
-  try{
-    await Promise.all([
-      tryLiveWordTranslation(uniqueUnknown),
-      tryLiveLineTranslation(rawLines).then(res => { currentSong.lineTranslations = res; })
-    ]);
-    liveWorked = true;
-  }catch(e){
-    console.warn("Live translation unavailable, using dictionary + manual fallback:", e);
-  }finally{
-    buildWordBank();
-    renderReadTab(); renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide(); renderTypeItSetup();
-    loadBtn.disabled = false;
-    const knownCount = wordBank.filter(w=>w.known).length;
-    if(liveWorked){
-      status.textContent = `"${title}" loaded — all ${wordBank.length} words translated automatically.`;
-    } else if(knownCount === wordBank.length){
-      status.textContent = `"${title}" loaded — all ${wordBank.length} words found in the dictionary.`;
-    } else {
-      status.textContent = `"${title}" loaded — ${knownCount}/${wordBank.length} words known. Use Quick-fill in Word Bank to reach 100%.`;
-    }
-    status.className = "status-line ready";
+  const knownCount = wordBank.filter(w=>w.known).length;
+  if(knownCount === wordBank.length){
+    status.textContent = `"${title}" loaded and saved to My Library — all ${wordBank.length} words found in the dictionary.`;
+  } else {
+    status.textContent = `"${title}" loaded and saved to My Library — ${knownCount}/${wordBank.length} words known. Use Quick-fill in Word Bank to reach 100%.`;
   }
+  status.className = "status-line ready";
 });
 
 /* ---------------- Word bank ---------------- */
@@ -851,6 +980,7 @@ function showWordPopupGeneric(word, el, ids, afterSave){
         sessionDict[word] = [input.value.trim(), 'custom'];
         buildWordBank();
         renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide();
+        persistCurrentSong();
         if(afterSave) afterSave();
         const refreshed = document.querySelector('.word-token.selected') || el;
         showWordPopupGeneric(word, refreshed, ids, afterSave);
@@ -932,6 +1062,7 @@ document.getElementById('save-fill-btn').addEventListener('click', ()=>{
   });
   buildWordBank();
   renderReadTab(); renderBankTab(); renderFillPanel(); renderQuizSetup(); renderSideBySide(); renderTypeItSetup();
+  persistCurrentSong();
   document.getElementById('fill-status').textContent = filled > 0 ? `Saved ${filled} translations.` : 'Nothing to save yet.';
 });
 
